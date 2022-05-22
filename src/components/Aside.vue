@@ -12,10 +12,10 @@
       <b style="color: white" v-show="logoTextShow">罗德岛·后台管理系统</b>
     </div>
 
-      <el-menu-item index="/home">
-          <i class="el-icon-house"></i>
-          <span slot="title">主页</span>
-      </el-menu-item>
+    <el-menu-item index="/home">
+      <i class="el-icon-house"></i>
+      <span slot="title">主页</span>
+    </el-menu-item>
     <el-submenu index="2">
     <template slot="title">
       <i class="el-icon-menu"></i>
@@ -25,6 +25,14 @@
       <i class="el-icon-s-custom"></i>
       <span slot="title">用户管理</span>
     </el-menu-item>
+      <el-menu-item index="/menu">
+        <i class="el-icon-menu"></i>
+        <span slot="title">菜单管理</span>
+      </el-menu-item>
+      <el-menu-item index="/role">
+        <i class="el-icon-s-check"></i>
+        <span slot="title">角色管理</span>
+      </el-menu-item>
     <el-menu-item index="/file">
       <i class="el-icon-document"></i>
       <span slot="title">文件管理</span>

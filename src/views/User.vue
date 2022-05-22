@@ -33,6 +33,14 @@
       <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column prop="id" label="ID" width="140"></el-table-column>
       <el-table-column prop="username" label="干员名" width="80"></el-table-column>
+      <el-table-column prop="role" label="角色">
+        <template slot-scope="scope">
+          <el-tag type="primary" v-if="scope.row.role === 'ROLE_ADMIN'">管理员</el-tag>
+          <el-tag type="warning" v-if="scope.row.role === 'ROLE_TEACHER'">高级干员</el-tag>
+          <el-tag type="warning" v-if="scope.row.role === 'ROLE_USER'">普通干员</el-tag>
+          <el-tag type="success" v-if="scope.row.role === 'ROLE_STUDENT'">普通干员</el-tag>
+        </template>
+      </el-table-column>
       <el-table-column prop="nickname" label="昵称" width="120"></el-table-column>
       <el-table-column prop="email" label="邮箱" width="120"></el-table-column>
       <el-table-column prop="phone" label="电话" width="120"></el-table-column>
@@ -70,6 +78,11 @@
         <el-form-item label="用户名">
           <el-input v-model="form.username" autocomplete="off"></el-input>
         </el-form-item>
+        <el-form-item label="角色">
+          <el-select clearable v-model="form.role" placeholder="请选择角色" style="width: 100%">
+            <el-option v-for="item in roles" :key="item.name" :label="item.name" :value="item.flag"></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item label="昵称">
           <el-input v-model="form.nickname" autocomplete="off"></el-input>
         </el-form-item>
@@ -106,6 +119,7 @@ export default {
       form: {},
       dialogFormVisible: false,
       multipleSelection: [],
+      roles:[]
     }
   },
   created() {
@@ -127,6 +141,11 @@ export default {
         this.tableData = res.data.records
         this.total = res.data.total
       })
+
+      this.request.get("/role").then(res => {
+        this.roles = res.data
+      })
+
       // fetch("http://localhost:9090/user/page?pageNum="+this.pageNum+"&pageSize=" + this.pageSize + "&username=" + this.username)
       //     .then(res => res.json()).then(res => {
       //   console.log(res)

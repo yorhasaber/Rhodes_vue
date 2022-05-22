@@ -49,11 +49,11 @@ export default {
       this.isCollapse = !this.isCollapse
       if (this.isCollapse) {  // 收缩
         this.sideWidth = 64
-        this.collapseBtnClass = ''
+        this.collapseBtnClass = 'el-icon-s-unfold'
         this.logoTextShow = false
       } else {   // 展开
         this.sideWidth = 200
-        this.collapseBtnClass = ''
+        this.collapseBtnClass = 'el-icon-s-fold'
         this.logoTextShow = true
       }
     },
