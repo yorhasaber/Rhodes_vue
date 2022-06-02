@@ -37,7 +37,7 @@
         <template slot-scope="scope">
           <el-tag type="primary" v-if="scope.row.role === 'ROLE_ADMIN'">管理员</el-tag>
           <el-tag type="warning" v-if="scope.row.role === 'ROLE_TEACHER'">高级干员</el-tag>
-          <el-tag type="warning" v-if="scope.row.role === 'ROLE_USER'">普通干员</el-tag>
+          <el-tag type="success" v-if="scope.row.role === 'ROLE_USER'">普通干员</el-tag>
           <el-tag type="success" v-if="scope.row.role === 'ROLE_STUDENT'">普通干员</el-tag>
         </template>
       </el-table-column>
@@ -102,6 +102,7 @@
       </div>
     </el-dialog>
   </div>
+
 </template>
 
 <script>

@@ -20,11 +20,13 @@
         </el-menu-item>
       </div>
       <div v-else>
-        <el-submenu :index="item.id + ''">
+
+        <el-submenu :index="item.id +''">
           <template slot="title">
             <i :class="item.icon"></i>
             <span slot="title">{{ item.name }}</span>
           </template>
+
           <div v-for="subItem in item.children" :key="subItem.id">
             <el-menu-item :index="subItem.path">
               <i :class="subItem.icon"></i>
@@ -85,5 +87,12 @@ export default {
 </script>
 
 <style scoped>
-
+/*隐藏文字*/
+.el-menu--collapse .el-submenu__title span{
+  display: none;
+}
+/*隐藏 > */
+.el-menu--collapse .el-submenu__title .el-submenu__icon-arrow{
+  display: none;
+}
 </style>

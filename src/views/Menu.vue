@@ -132,6 +132,7 @@ export default {
         if (res.code === '200') {
           this.$message.success("保存成功")
           this.dialogFormVisible = false
+          localStorage.setItem("menus", JSON.stringify(res.data.menus))  // 存储用户信息到浏览器
           this.load()
         } else {
           this.$message.error("保存失败")

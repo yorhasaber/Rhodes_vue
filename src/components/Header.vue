@@ -68,16 +68,20 @@ export default {
   },
   methods: {
     collapse(){
+      // this.$parent.$parent.$parent.$parent.collapse()  // 通过4个 $parent 找到父组件，从而调用其折叠方法
       this.$emit("asideCollapse")
     },
     // currentPathName(newVal, oldVal) {
     //   console.log(newVal)
     // }
     logout(){
-      this.$router.push("/login")
-      localStorage.removeItem("user")
+      this.$store.commit("logout")
       this.$message.success("退出成功")
-    }
+      localStorage.removeItem(menus)
+      // this.$router.push("/login")
+      // localStorage.removeItem("user")
+      // this.$message.success("退出成功")
+    },
 
   }
 }
